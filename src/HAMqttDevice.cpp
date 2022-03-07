@@ -23,10 +23,13 @@ HAMqttDevice::HAMqttDevice(
     switch (type)
     {
     case DeviceType::ALARM_CONTROL_PANEL:
+    case DeviceType::COVER:
     case DeviceType::FAN:
     case DeviceType::LIGHT:
     case DeviceType::LOCK:
+    case DeviceType::NUMBER:
     case DeviceType::SWITCH:
+    case DeviceType::BUTTON:
         enableCommandTopic();
     default:
         break;
@@ -37,9 +40,11 @@ HAMqttDevice::HAMqttDevice(
     {
     case DeviceType::ALARM_CONTROL_PANEL:
     case DeviceType::BINARY_SENSOR:
+    case DeviceType::COVER:
     case DeviceType::FAN:
     case DeviceType::LIGHT:
     case DeviceType::LOCK:
+    case DeviceType::NUMBER:
     case DeviceType::SENSOR:
     case DeviceType::SWITCH:
         enableStateTopic();
@@ -156,6 +161,10 @@ String HAMqttDevice::deviceTypeToStr(DeviceType type)
         return "climate";
     case DeviceType::VACUUM:
         return "vacuum";
+    case DeviceType::NUMBER:
+        return "number";
+    case DeviceType::BUTTON:
+        return "button";
     default:
         return "[Unknown DeviceType]";
     }
