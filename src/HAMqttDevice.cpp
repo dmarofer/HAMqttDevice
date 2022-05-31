@@ -1,4 +1,5 @@
 #include "HAMqttDevice.h"
+#include <vector>
 
 HAMqttDevice::HAMqttDevice(
     const String &name,
